@@ -1,3 +1,21 @@
+<hr>
+<label>User Name</label>
+<input
+  type="text"
+  class="form-control"
+  [(ngModel)]="userName">
+
+<p *ngIf="!(userName==='')">{{ userName }}</p>
+
+<button
+  class="btn btn-primary"
+  [disabled]="(userName==='')"
+  (click)="onClickResetUserName()">
+  {{ getUserName() }}
+</button>
+
+<hr>
+
 <label>Server Name</label>
 <!-- <input
   type="text"
@@ -10,24 +28,6 @@
 
   <p>{{ serverName }}</p>
 
-<hr>
-
-<input
-  type="text"
-  class="form-control"
-  [(ngModel)]="userName">
-
-<p>{{ userName }}</p>
-
-<button
-  class="btn btn-primary"
-  [disabled]="(userName==='')"
-  (click)="onClickResetUserName()">
-  {{ getUserName() }}
-</button>
-
-<hr>
-
 <button
   class="btn btn-primary"
   [disabled]="!allowNewServer"
@@ -35,9 +35,14 @@
   Add Server
 </button>
 <!-- <p [innerText]="allowNewServer"></p> -->
-<p>{{ serverCreationStatus }}</p>
-<app-server></app-server>
-<app-server></app-server>
+<!-- <p>{{ serverCreationStatus }}</p> -->
+<p *ngIf="serverCreated; else noServer">{{ serverCreationStatus }}</p>
+<ng-template #noServer>
+  <p>No server created</p>
+</ng-template>
+
+
+<app-server *ngFor="let server of servers"></app-server>
 
 <!-- How do you know to which Properties or Events of HTML Elements you may bind?
   You can basically bind to all Properties and Events -
