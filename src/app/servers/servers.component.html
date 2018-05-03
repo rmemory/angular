@@ -16,6 +16,24 @@
 
 <hr>
 
+<button
+  class="btn btn-primary"
+  (click)="onClickToggleSecretPassword()">
+  Display Secret Password
+</button>
+<p *ngIf="showSecretPassword">Secret Password = tuna</p>
+
+<ul>
+    <li style="list-style-type: none"
+      *ngFor="let log of secretPasswordClickLog; let i = index"
+      [ngStyle]="{backgroundColor: i >= 4 ? 'blue' : 'transparent'}"
+      [ngClass]="{makeItWhite: i >= 4}">
+      {{ log }}
+    </li>
+</ul>
+
+<hr>
+
 <label>Server Name</label>
 <!-- <input
   type="text"
