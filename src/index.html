@@ -9,6 +9,28 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <app-root></app-root>
+  <!--
+
+      The app-root tag is replaced by all of the src/app/app.component.*
+      files because, app.component.ts has a seelector: app-root, and
+      AppComponent is declared as a module in the src/app/app.module.ts
+
+      The modules and components are imported through the import scripts.
+
+      See the main.ts file. It is the first file that is executed. It
+      contains these lines, which is how the app.module is included, and
+      consequently, how the app.component is included:
+
+      import { AppModule } from './app/app.module';
+
+      platformBrowserDynamic().bootstrapModule(AppModule)
+
+      bootstrap modules are analyzed when Angular launches the initial
+      index.html file.
+
+      We can use "ng generate component servers" command, or equivalently,
+      "ng g c <component_name>"
+    -->
+  <app-root>Loading ...</app-root>
 </body>
 </html>
