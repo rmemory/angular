@@ -15,6 +15,7 @@ export class ServersComponent implements OnInit {
   allowNewServer = false;
   serverCreationStatus = 'No server was created';
   serverName='';
+  userName='';
 
   constructor() {
     setTimeout(() => {
@@ -23,6 +24,18 @@ export class ServersComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onClickResetUserName() {
+    this.userName='';
+  }
+
+  getUserName() {
+    if (this.userName === '') {
+      return 'Invalid username'
+    } else {
+      return this.userName;
+    }
   }
 
   onCreateServer() {
