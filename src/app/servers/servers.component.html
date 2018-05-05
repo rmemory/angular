@@ -1,5 +1,23 @@
+<!-- This file demonstrates the following Angular topics ...
+
+  * ngIf (with an else case as well)
+  * [[ngModel]] bi-directional data connection
+  * [property] binding
+  * (someEvent) connection to a method
+  * {{ someVar }} string interpolation
+  * ngFor
+  * [ngStyle]
+  * [ngClass]
+
+-->
+
 <hr>
-<label>User Name</label>
+<!-- This section shows usage of conditionally displaying content using the
+     the *ngIf directive. In this example, the userName variable is defined
+     in the servers.component.ts, and ngIf is used to determine if the p tags
+     are added to the DOM depending on whether userName is non-empty. It also
+     demonstrates usage of bi-directional data using [(ngModel)] -->
+<label>Input a User Name</label>
 <input
   type="text"
   class="form-control"
@@ -7,6 +25,10 @@
 
 <p *ngIf="!(userName==='')">{{ userName }}</p>
 
+<!-- This is an example of a button that is disabled depending on whether the
+     userName variable is empty or not. Also, it connects a method to the click
+     event of the button, and displays the text printed on the button using
+     another method -->
 <button
   class="btn btn-primary"
   [disabled]="(userName==='')"
@@ -16,6 +38,8 @@
 
 <hr>
 
+<!-- This is a similar example of ngIf as above, conditionally displaying a paragraph
+     if a varaible is false or true. -->
 <button
   class="btn btn-primary"
   (click)="onClickToggleSecretPassword()">
@@ -23,6 +47,8 @@
 </button>
 <p *ngIf="showSecretPassword">Secret Password = tuna</p>
 
+<!-- The first example of using ngfor, ngStyle, and ngClass which loop around an
+     array, and conditionally apply styles and classes. -->
 <ul>
     <li style="list-style-type: none"
       *ngFor="let log of secretPasswordClickLog; let i = index"
@@ -34,6 +60,7 @@
 
 <hr>
 
+<!-- An example of bi-directional data binding using [(ngModel)] -->
 <label>Server Name</label>
 <!-- <input
   type="text"
@@ -46,30 +73,37 @@
 
   <p>{{ serverName }}</p>
 
+<!-- Another example of property binding [disabled] and event listener -->
 <button
   class="btn btn-primary"
   [disabled]="!allowNewServer"
   (click)="onCreateServer()">
   Add Server
 </button>
+
+<!-- A quick example of innerText -->
 <!-- <p [innerText]="allowNewServer"></p> -->
 <!-- <p>{{ serverCreationStatus }}</p> -->
+
+<!-- Here is an else example of ngIf -->
 <p *ngIf="serverCreated; else noServer">{{ serverCreationStatus }}</p>
 <ng-template #noServer>
   <p>No server created</p>
 </ng-template>
 
-
+<!-- Another usage of ngFor -->
 <app-server *ngFor="let server of servers"></app-server>
 
 <!-- How do you know to which Properties or Events of HTML Elements you may bind?
-  You can basically bind to all Properties and Events -
-  a good idea is to console.log()  the element you're interested in to see which
-  properties and events it offers.
 
-Important: For events, you don't bind to onclick but only to click (=> (click)).
+     You can basically bind to all Properties and Events -
 
-The MDN (Mozilla Developer Network) offers nice lists of all properties and events
-of the element you're interested in. Googling for YOUR_ELEMENT properties  or
-YOUR_ELEMENT events
+    A good idea is to console.log()  the element you're interested in to see which
+    properties and events it offers.
+
+    Important: For events, you don't bind to onclick but only to click (=> (click)).
+
+    The MDN (Mozilla Developer Network) offers nice lists of all properties and events
+    of the element you're interested in. Googling for YOUR_ELEMENT properties or
+    YOUR_ELEMENT events.
  -->
